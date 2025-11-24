@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetTreats Bakery - Pastries</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #fff8f3;
+        }
+
+        /* HEADER NAVBAR */
+        .navbar-brand {
+            font-weight: bold;
+            color: #7b3f00 !important;
+        }
+        .nav-link {
+            color: #7b3f00 !important;
+            font-weight: 600;
+        }
+        .nav-link:hover {
+            color: #a65c1f !important;
+        }
+
+        /* Banner */
+        .header-banner {
+            background: #ffb3b3;
+            color: white;
+            padding: 70px 0;
+            text-align: center;
+        }
+        .header-banner h1 {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        /* Pastry Cards */
+        .pastry-card {
+            background: white;
+            border-radius: 12px;
+            transition: .3s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+        .pastry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+        .pastry-img {
+            width: 100%;
+            height: 220px;
+            background: #ffe5e5;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            font-size: 3rem;
+            color: #c94c4c;
+        }
+
+        /* Toast */
+        #toastMessage {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ff6f61;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #7b3f00;
+            color: white;
+            padding: 20px 0;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER (Same on all pages) -->
+    <nav class="navbar navbar-expand-lg bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">SweetTreats Bakery</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="bakeryshop.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cakes.html">Cakes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pastries.html">Pastries</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner -->
+    <section class="header-banner">
+        <h1>Our Fresh Pastries</h1>
+        <p>Light, flaky, and baked fresh daily.</p>
+    </section>
+
+    <!-- Pastries Grid -->
+    <div class="container py-5">
+        <div class="row g-4" id="pastryContainer">
+
+            <!-- JS Will insert pastry cards -->
+
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toastMessage"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Pastry Data WITH EMOJIS
+        const pastries = [
+            { name: "Croissant", emoji: "🥐", price: "₹120", desc: "Flaky, buttery, and freshly baked." },
+            { name: "Danish Pastry", emoji: "🥮", price: "₹150", desc: "Sweet and soft with fruit filling." },
+            { name: "Chocolate Éclair", emoji: "🍫", price: "₹130", desc: "Filled with creamy custard & chocolate." },
+            { name: "Cinnamon Roll", emoji: "🍥", price: "₹140", desc: "Soft roll with cinnamon sugar swirl." },
+            { name: "Puff Pastry", emoji: "🥟", price: "₹90", desc: "Crispy and golden puff layers." },
+            { name: "Cream Puff", emoji: "🍰", price: "₹110", desc: "Light pastry filled with whipped cream." }
+        ];
+
+        const container = document.getElementById("pastryContainer");
+
+        pastries.forEach(p => {
+            container.innerHTML += `
+                <div class="col-md-4">
+                    <div class="pastry-card">
+                        <div class="pastry-img">${p.emoji}</div>
+                        <div class="p-3">
+                            <h5>${p.name}</h5>
+                            <p>${p.desc}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold">${p.price}</span>
+                                <button class="btn btn-sm btn-danger" onclick="addToCart('${p.name}')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        function addToCart(item) {
+            const toast = document.getElementById("toastMessage");
+            toast.innerText = item + " added to cart!";
+            toast.style.display = "block";
+            setTimeout(() => toast.style.display = "none", 2000);
+        }
+    </script>
+
+    
+    <!-- Footer (Same on every page) -->
+    <footer>
+        <div class="container">
+            <div class="footer-content row">
+
+                <div class="col-md-3 footer-section">
+                    <h3>About SWEET TREATS BAKERY</h3>
+                    <p>We've been creating delicious cakes and pastries for over 20 years, using traditional recipes and the finest ingredients.</p>
+                </div>
+
+                <div class="col-md-3 footer-section">
+                    <h3>Quick Links</h3>
+                    <ul style="list-style:none; padding-left:0;">
+                        <li><a href="bakeryshop.html">Home</a></li>
+                        <li><a href="cakes.html">Cakes</a></li>
+                        <li><a href="pastries.html">Pastries</a></li>
+                        <li><a href="customer orders.html">Custom Orders</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 footer-section">
+                    <h3>Contact Information</h3>
+                    <p>123 Sweet Street, Confectionery District</p>
+                    <p>📞 +1 234 567 8900</p>
+                    <p>📧 info@Bakrycakes.com</p>
+                </div>
+
+                <div class="col-md-3 footer-section">
+                    <h3>Follow Us</h3>
+                    <p>Facebook | Instagram | Twitter | Pinterest</p>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom text-center pt-3">
+                <p>&copy; 2025 Bakrycakes Cakes. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
