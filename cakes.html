@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetTreats Bakery - Cakes</title>
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #fff8f3;
+        }
+
+        /* Header Banner */
+        .header-banner {
+            background: #ffb3b3;
+            color: white;
+            padding: 70px 0;
+            text-align: center;
+        }
+
+        .header-banner h1 {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .cake-card {
+            border-radius: 12px;
+            transition: 0.3s;
+            background-color: white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        .cake-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .cake-img {
+            width: 100%;
+            height: 220px;
+            background: #ffe5e5;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        /* Add to Cart Toast */
+        #toastMessage {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ff6f61;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        /* HEADER & FOOTER STYLES (FROM MAIN PAGE) */
+        header {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .container-header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 25px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 17px;
+        }
+        .search-cart {
+            display: flex;
+            align-items: center;
+        }
+        .search-box {
+            display: flex;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            margin-right: 20px;
+        }
+        .search-box input {
+            border: none;
+            padding: 10px 15px;
+            outline: none;
+            width: 200px;
+        }
+        .search-box button {
+            background: #ff6b6b;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            color: white;
+        }
+        .cart-icon {
+            color: white;
+            font-size: 22px;
+            position: relative;
+        }
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #ff6b6b;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        footer {
+            background: #553c3c;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER (FROM MAIN PAGE) -->
+    <header>
+        <div class="container-header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-birthday-cake"></i>
+                    SweetTreats BAKERY
+                </div>
+
+                <nav>
+                    <ul>
+                        <li><a href="bakeryshop.html">Home</a></li>
+                        <li><a href="cakes.html">Cakes</a></li>
+                        <li><a href="pastries.html">Pastries</a></li>
+                        <li><a href="customer orders.html">Custom Orders</a></li>
+                        <li><a href="ABOUT US.HTML">About Us</a></li>
+                    </ul>
+                </nav>
+
+                <div class="search-cart">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search cakes...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <section class="header-banner">
+        <h1>Our Delicious Cakes</h1>
+        <p>Freshly baked with love by SweetTreats Bakery</p>
+    </section>
+
+    <!-- Cakes Section -->
+    <div class="container py-5">
+        <div class="row g-4" id="cakeContainer"></div>
+    </div>
+
+    <!-- Toast Message -->
+    <div id="toastMessage">Added to cart!</div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container-header">
+            <div class="footer-content">
+                <div>
+                    <h3>About SWEET TREATS BAKERY</h3>
+                    <p>We've been creating delicious cakes and pastries for over 20 years, using traditional recipes and the finest ingredients.</p>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul style="list-style:none;">
+                        <li><a href="bakeryshop.html" style="color:#ddd;">Home</a></li>
+                        <li><a href="cakes.html" style="color:#ddd;">Cakes</a></li>
+                        <li><a href="pastries.html" style="color:#ddd;">Pastries</a></li>
+                        <li><a href="customer orders.html" style="color:#ddd;">Custom Orders</a></li>
+                        <li><a href="ABOUT US.HTML" style="color:#ddd;">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Sweet Street, Confectionery District</p>
+                    <p><i class="fas fa-phone"></i> +1 234 567 8900</p>
+                    <p><i class="fas fa-envelope"></i> info@Bakrycakes.com</p>
+                </div>
+                <div>
+                    <h3>Follow Us</h3>
+                    <div>
+                        <a href="#"><i class="fab fa-facebook" style="color:white;font-size:20px;margin-right:10px;"></i></a>
+                        <a href="#"><i class="fab fa-instagram" style="color:white;font-size:20px;margin-right:10px;"></i></a>
+                        <a href="#"><i class="fab fa-twitter" style="color:white;font-size:20px;margin-right:10px;"></i></a>
+                        <a href="#"><i class="fab fa-pinterest" style="color:white;font-size:20px;"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Bakrycakes Cakes. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap + JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Cake Data with Emoji
+        const cakes = [
+            { name: "Chocolate Truffle Cake 🍫", price: "₹550", desc: "Rich and creamy chocolate cake." },
+            { name: "Red Velvet Cake ❤️", price: "₹650", desc: "Soft red velvet with cream cheese frosting." },
+            { name: "Black Forest Cake 🍒", price: "₹500", desc: "Classic cake with cherries and cream." },
+            { name: "Blueberry Cheesecake 🫐", price: "₹700", desc: "Creamy cheesecake with blueberry topping." },
+            { name: "Pineapple Cake 🍍", price: "₹450", desc: "Fresh pineapple flavour with soft sponge." },
+            { name: "Butterscotch Cake 🍯", price: "₹600", desc: "Crunchy and caramel-rich taste." }
+        ];
+
+        const container = document.getElementById("cakeContainer");
+
+        cakes.forEach(cake => {
+            container.innerHTML += `
+                <div class="col-md-4">
+                    <div class="cake-card">
+                        <div class="cake-img">${cake.name.split(" ")[cake.name.split(" ").length - 1]}</div>
+                        <div class="p-3">
+                            <h5>${cake.name}</h5>
+                            <p>${cake.desc}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold">${cake.price}</span>
+                                <button class="btn btn-sm btn-danger" onclick="addToCart('${cake.name}')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        function addToCart(name) {
+            const toast = document.getElementById("toastMessage");
+            toast.innerText = name + " added to cart!";
+            toast.style.display = "block";
+            setTimeout(() => toast.style.display = "none", 2000);
+        }
+    </script>
+
+</body>
+</html>
